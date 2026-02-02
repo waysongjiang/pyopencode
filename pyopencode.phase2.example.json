@@ -1,0 +1,34 @@
+{
+  "default_agent": "general",
+  "permissions": [
+    {"match": "tool:read", "decision": "allow"},
+    {"match": "tool:grep", "decision": "allow"},
+    {"match": "tool:glob", "decision": "allow"},
+    {"match": "tool:listdir", "decision": "allow"},
+
+    {"match": "edit", "decision": "ask"},
+    {"match": "bash", "decision": "ask"},
+
+    {"match": "tool:webfetch", "decision": "allow"},
+    {"match": "tool:todoread", "decision": "allow"},
+    {"match": "tool:todowrite", "decision": "allow"}
+  ],
+  "agents": {
+    "plan": {
+      "description": "Read-only planning agent.",
+      "system_prompt": "Mode: PLAN. You must not edit files or run shell commands. Use list/glob/grep/read to inspect and produce a concrete plan.",
+      "permission_overrides": {"edit": "deny", "bash": "deny"}
+    },
+    "build": {
+      "description": "Implementation agent.",
+      "system_prompt": "Mode: BUILD. You may edit files using deterministic edits (edit/multiedit/patch). Use bash only when necessary.",
+      "permission_overrides": {"edit": "allow", "bash": "ask"}
+    },
+    "run": {
+      "description": "Run tests and commands safely.",
+      "system_prompt": "Mode: RUN. You may use bash to run tests/build steps. Avoid destructive commands.",
+      "permission_overrides": {"edit": "allow", "bash": "allow"}
+    }
+  },
+  "rules_files": []
+}

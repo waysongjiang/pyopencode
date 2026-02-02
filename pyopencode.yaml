@@ -1,0 +1,16 @@
+providers:
+  deepseek:
+    PYOPENCODE_MODEL: deepseek-coder
+    PYOPENCODE_BASE_URL: https://api.deepseek.com/v1
+    PYOPENCODE_API_KEY: ${DEEPSEEK_KEY}
+
+  kimi:
+    PYOPENCODE_MODEL: kimi-k2-0905-preview
+    PYOPENCODE_BASE_URL: https://api.moonshot.cn/v1
+    PYOPENCODE_API_KEY: ${KIMI_KEY}
+
+  qwen:
+    PYOPENCODE_MODEL: qwen3-coder-plus
+    PYOPENCODE_BASE_URL: https://dashscope.aliyuncs.com/compatible-mode/v1
+    PYOPENCODE_API_KEY: ${QWEN_KEY}
+

@@ -1,0 +1,22 @@
+{
+  "mcp_servers": {
+    "example": {
+      "command": [
+        "python",
+        "-m",
+        "pyopencode.mcp.example_server"
+      ],
+      "prefix": "mcp.example"
+    }
+  },
+  "permissions": [
+    {
+      "match": "mcp",
+      "decision": "ask"
+    },
+    {
+      "match": "tool:mcp.example.*",
+      "decision": "allow"
+    }
+  ]
+}
